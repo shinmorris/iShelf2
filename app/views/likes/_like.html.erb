@@ -1,0 +1,7 @@
+          <% if user_signed_in?%>  
+              <% if post.liked_by?(@current_user) %> 
+                  <p><%=link_to image_tag('heart.png', :size => '35x35'),post_likes_path(post.id), method: :delete,remote: true %></p>
+              <% else %>
+                  <p><%=link_to image_tag('shapes.png', :size => '35x35'),post_likes_path(post.id), method: :post,remote: true %></p>
+              <% end %>
+          <% end %>

@@ -1,0 +1,50 @@
+<header>
+<div class="navibar">
+<ul id="flip3" class="dropmenu">
+<li>
+<div class="topmenu batten">
+<span></span>
+</div>
+<ul>
+<li><%= link_to "MY PHOTOS",users_path, :class =>  "entry_text"%></li>
+<li><%= link_to "ENTRY",entry_posts_path, :class =>  "entry_text"%></li>
+<li><%= link_to "HOME",root_path, :class =>  "entry_text"%></li>
+<li><%= link_to "LOGOUT",users_sign_out_path, method: :delete %></li>
+</header>
+
+
+<h2>search results</h2>
+
+<div class="questionlist">
+  <div class ="result_title">質問内容をクリックしてください。</div>
+  <% if @results.any? %>
+        <% @results.each do |result| %>
+          <li class= "list">
+          <%=link_to result.ask_title,question_path(result)%></li>
+      <%end%>
+<%end%>
+</div>
+
+<style>
+
+.result_title{
+  text-align: center;
+}
+.questionlist{
+  width:100%;
+    display:block;
+
+}
+li{
+  margin: 0 auto;
+}
+ li.list{
+   list-style-type: decimal;
+   width: 30%;
+   margin-top: 20px;
+   border-bottom: solid 1px #fff ;
+
+
+   
+ }
+</style>

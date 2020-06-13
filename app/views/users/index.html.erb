@@ -1,0 +1,25 @@
+<div class="navibar">
+<ul id="flip3" class="dropmenu">
+<li>
+<div class="topmenu batten">
+<span></span>
+</div>
+<ul>
+<li><%= link_to "HOME",root_path, :class =>  "entry_text"%></li>
+<li><%= link_to "AWARD",award_posts_path %></li>
+<li><%= link_to "ENTRY",entry_posts_path, :class =>  "entry_text"%></li>
+<li><%= link_to "ASK",questions_path(current_user) %></li>
+<li><%= link_to "LOGOUT",users_sign_out_path, method: :delete %></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1>YOUR PHOTOS</h1>
+
+<div class="gallery">
+    <% @post.each do |post| %>
+    <%= image_tag(post.image.to_s, :size => '480x270') %>
+    <% end %>
+</div>
+ <div class="subhead"> <%= link_to 'BACK TO HOME',root_path %></div>

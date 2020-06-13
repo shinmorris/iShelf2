@@ -1,0 +1,118 @@
+<div class="navibar">
+<ul id="flip3" class="dropmenu">
+<li>
+<div class="topmenu batten">
+<span></span>
+</div>
+<ul>
+<li><%= link_to "MY PHOTOS",users_path, :class =>  "entry_text"%></li>
+<li><%= link_to "HOME",root_path, :class =>  "entry_text"%></li>
+<li><%= link_to "ASK",questions_path(current_user) %></li>
+<li><%= link_to "LOGOUT",users_sign_out_path, method: :delete %></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+<header class="awardhead">
+    <div class="mainhead">Weekly Award</div>
+    <div class="subhead">York, MA - Thursday August 30, 1978 - Seven Pages</div>
+</header>
+
+<div class="awardcontent">
+<section>
+<article class="breaking">
+  <%= image_tag(@post1.image.to_s)%>
+    <h1><%=@post1.photo_name%></h1>
+    <h2>Grand Prix</h2>
+    <h3>instagram ID is <%=@post1.instagram_id%></h3>
+    <h3>location <%=@post1.location%></h3>
+        <p>Whatever course you decide upon, there is always someone to tell you that you are wrong. There are always difficulties arising which tempt you to believe that your critics are right. To map out a course of action and follow it to an end requires courage.
+</article>
+
+<article>
+  <%= image_tag(@post2.image.to_s)%>
+    <h1><%=@post2.photo_name%></h1>
+    <h2>2nd place</h2>
+    <h3>instagram ID is <%=@post2.instagram_id%></h3>
+    <h3>location <%=@post2.location%></h3>
+<p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.</p>
+</article>
+
+<article>
+  <%= image_tag(@post3.image.to_s)%>
+
+    <h1><%=@post3.photo_name%></h1>
+    <h2>3rd place</h2>
+    <h3>instagram ID is <%=@post3.instagram_id%></h3>
+    <h3>location <%=@post3.location%></h3>
+<p>I never lose an opportunity of urging a practical beginning, however small, for it is wonderful how often in such matters the mustard-seed germinates and roots itself.
+</article>
+</section>
+</div>
+
+<div class="awardcontent">
+<section>
+<article class="breaking">
+  <%= image_tag(@post4.image.to_s,:size =>'480x270')%>
+    <h1><%=@post4.photo_name%></h1>
+    <h2>Grand Prix</h2>
+    <h3>instagram ID is <%=@post4.instagram_id%></h3>
+    <h3>location <%=@post4.location%></h3>
+    <p>Whatever course you decide upon, there is always someone to tell you that you are wrong. There are always difficulties arising which tempt you to believe that your critics are right. To map out a course of action and follow it to an end requires courage.
+</article>
+
+<article>
+  <%= image_tag(@post5.image.to_s,:size =>'336x189')%>
+    <h1><%=@post5.photo_name%></h1>
+    <h2>2nd place</h2>
+    <h3>instagram ID is <%=@post5.instagram_id%></h3>
+    <h3>location <%=@post5.location%></h3>
+<p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.</p>
+</article>
+
+<article>
+  <%= image_tag(@post6.image.to_s,:size =>'336x189')%>
+
+    <h1><%=@post6.photo_name%></h1>
+    <h2>3rd place</h2>
+    <h3>instagram ID is <%=@post6.instagram_id%></h3>
+    <h3>location <%=@post6.location%></h3>
+<p>I never lose an opportunity of urging a practical beginning, however small, for it is wonderful how often in such matters the mustard-seed germinates and roots itself.
+</article>
+</section>
+</div>
+
+<div class="awardcontent">
+<section>
+<article class="breaking">
+  <%= image_tag(@post7.image.to_s,:size =>'480x270')%>
+    <h1><%=@post7.photo_name%></h1>
+    <h2>Grand Prix</h2>
+    <h3>instagram ID is <%=@post7.instagram_id%></h3>
+    <h3>location <%=@post7.location%></h3>
+    <p>Whatever course you decide upon, there is always someone to tell you that you are wrong. There are always difficulties arising which tempt you to believe that your critics are right. To map out a course of action and follow it to an end requires courage.
+</article>
+
+<article>
+  <%= image_tag(@post8.image.to_s,:size =>'336x189')%>
+    <h1><%=@post8.photo_name%></h1>
+    <h2>2nd place</h2>
+    <h3>instagram ID is <%=@post8.instagram_id%></h3>
+    <h3>location <%=@post8.location%></h3>
+<p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future.</p>
+</article>
+
+<article>
+  <%= image_tag(@post9.image.to_s,:size =>'336x189')%>
+
+    <h1><%=@post9.photo_name%></h1>
+    <h2>3rd place</h2>
+    <h3>instagram ID is <%=@post9.instagram_id%></h3>
+    <h3>location <%=@post9.location%></h3>
+<p>I never lose an opportunity of urging a practical beginning, however small, for it is wonderful how often in such matters the mustard-seed germinates and roots itself.
+</article>
+</section>
+</div>
+ <div class="subhead"> <%= link_to 'BACK TO HOME',root_path %></div>

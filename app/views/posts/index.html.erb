@@ -1,0 +1,142 @@
+<div class="navibar">
+<ul id="flip3" class="dropmenu">
+<li>
+<div class="topmenu batten">
+<span></span>
+</div>
+<ul>
+<li><%= link_to "MY PHOTOS",users_path, :class =>  "entry_text"%></li>
+<li><%= link_to "ENTRY",entry_posts_path, :class =>  "entry_text"%></li>
+<li><%= link_to "MY QUESTIONS",user_path(current_user) %></li>
+<li><%= link_to "AWARD",award_posts_path %></li>
+<li><%= link_to "ASK",questions_path(current_user) %></li>
+<li><%= link_to "LOGOUT",users_sign_out_path, method: :delete %></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<header class="tophead">
+    <div class="kigyou">
+    <%=image_tag 'Portalogo.png',:size=>'320x180',:class =>  "kigyoulogo"%>
+    <div class = "logo_tachi">
+      <div class="topsubhead_ue"> this is holded by PORTA </div>
+      <div class="topmainhead">PHOTO CONTEST</div>
+      <div class="topsubhead_shita">Add value to your photos </div>
+    </div>
+
+    <div class = payjp_button>
+    <% if @card.present?%>
+      もう決済しているよ
+      <% else %>
+      <%= link_to "会員登録する", new_card_path%>
+      <% end %>
+    </div>
+
+ </header>
+
+
+
+<!--テーマ1画像表示部分-->
+<div class="odaiarea">
+  <div class="categorypath">THEME【雨の日】</div>
+  
+  <p class="syokingaku">最優秀賞　賞金 20,000円　2～5位ランクイン　賞金1,000円</p>
+  
+  <div class="button_top">
+     <%= link_to "Entry",entry_posts_path, :class =>  "entry_text"%>
+    <div class="hoverBtn"></div>
+    <div class="hoverBtn-bottom"></div>
+  </div>
+</div>
+
+  <div class="themaphotos">
+  <% @thema1.each do |post|%>
+    <ul>
+      <li class="photo"><%= image_tag(post.image.to_s, :size => '480x270') %></li>
+      <li class="photoname"><div class="photonamesize">sub title:<%= post.photo_name%></div>
+    <div class="good">
+<!--非同期部分-->
+  <div id="likes_buttons_<%= post.id %>">
+   <%= render partial: 'likes/like', locals: { post: post} %>
+   </div>
+<!--非同期部分ここまで-->
+      </div></li>
+      <li>location:<%= post.location%></li>
+       </ul>
+  <% end %>
+</div>
+<!--テーマ別画像表示部分ここまで-->
+
+
+<!--テーマ1画像表示部分-->
+<div class="odaiarea">
+  <div class="categorypath"> THEME【夏の始まり】</div>
+  
+  <p class="syokingaku">最優秀賞　賞金 20,000円　2～5位ランクイン　賞金1,000円</p>
+  
+  <div class="button_top">
+     <%= link_to "Entry",entry_posts_path, :class =>  "entry_text"%>
+    <div class="hoverBtn"></div>
+    <div class="hoverBtn-bottom"></div>
+  </div>
+</div>
+
+  <div class="themaphotos">
+  <% @thema2.each do |post|%>
+    <ul>
+      <li class="photo"><%= image_tag(post.image.to_s, :size => '480x270') %></li>
+      <li class="photoname"><div class="photonamesize">sub title:<%= post.photo_name%></div>
+    <div class="good">
+<!--非同期部分-->
+  <div id="likes_buttons_<%= post.id %>">
+   <%= render partial: 'likes/like', locals: { post: post} %>
+   </div>
+<!--非同期部分ここまで-->
+      </div></li>
+      <li>location:<%= post.location%></li>
+    </ul>
+  <% end %>
+</div>
+<!--テーマ別画像表示部分ここまで-->
+
+<!--テーマ1画像表示部分-->
+<div class="odaiarea">
+  <div class="categorypath"> THEME【建造物と車】</div>
+  
+  <p class="syokingaku">最優秀賞　賞金 20,000円　2～5位ランクイン　賞金1,000円</p>
+  
+  <div class="button_top">
+     <%= link_to "Entry",entry_posts_path, :class =>  "entry_text"%>
+    <div class="hoverBtn"></div>
+    <div class="hoverBtn-bottom"></div>
+  </div>
+</div>
+
+  <div class="themaphotos">
+  <% @thema3.each do |post|%>
+    <ul>
+      <li class="photo"><%= image_tag(post.image.to_s, :size => '480x270') %></li>
+      <li class="photoname"><div class="photonamesize">sub title:<%= post.photo_name%></div>
+    <div class="good">
+<!--非同期部分-->
+  <div id="likes_buttons_<%= post.id %>">
+   <%= render partial: 'likes/like', locals: { post: post} %>
+   </div>
+<!--非同期部分ここまで-->
+      </div></li>
+      <li>location:<%= post.location%></li>
+    </ul>
+  <% end %>
+</div>
+<!--テーマ別画像表示部分ここまで-->
+
+
+
+
+ <div class="subhead"> <%= link_to "LOGOUT",users_sign_out_path, method: :delete %></div>
+
+<div class="kigyou">
+<%= image_tag 'ishelf_logo_kirinuki.png',:class =>  "kigyoulogo" %>
+</div>
+

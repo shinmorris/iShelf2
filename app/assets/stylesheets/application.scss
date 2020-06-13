@@ -1,0 +1,63 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+
+
+//  @import 'font-awesome-sprockets';
+//   @import 'font-awesome';
+
+
+// body{
+// background-image: image-url('\app\assets\images\スクリーンショット 2020-05-14 14.50.17.png')
+// }
+
+*{
+  // background-color: rgb(26,26,26);
+
+  // background-repeat: repeat-y;
+  // background-color: gray;
+  // background-image: url("https://ferret.akamaized.net/images/56fc0e0969702d558e350000/original.jpeg?1459359241");
+  text-decoration: none;
+  color: #fff;
+  font-family:'MV Boil',sans-serif;
+  list-style:none;
+}
+html{
+background: image-url('background_top.png');
+  // background-image: url("https://cdn.pixabay.com/photo/2014/04/05/11/39/rain-316580_960_720.jpg");
+  background-repeat: repeat;
+  background-size: 100% auto;}
+
+.tophead{
+  background: image-url('background_top.png');
+  // background-image: url("https://cdn.pixabay.com/photo/2014/04/05/11/39/rain-316580_960_720.jpg");
+  background-repeat: repeat;
+    background-size: 100% auto;} 
+
+.notifications {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: red;
+  }
+
+  .alert {
+    background-color: alert_orange;
+  }
+}
+       
+    

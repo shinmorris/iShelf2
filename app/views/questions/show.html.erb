@@ -1,0 +1,185 @@
+<header>
+<div class="navibar">
+<ul id="flip3" class="dropmenu">
+<li>
+<div class="topmenu batten">
+<span></span>
+</div>
+<ul>
+<li><%= link_to "MY PHOTOS",users_path, :class =>  "entry_text"%></li>
+<li><%= link_to "ENTRY",entry_posts_path, :class =>  "entry_text"%></li>
+<li><%= link_to "HOME",root_path, :class =>  "entry_text"%></li>
+<li><%= link_to "LOGOUT",users_sign_out_path, method: :delete %></li>
+</header>
+
+<div class="bbbbbody">
+  <div class="stackshow">
+    <ul>
+        <li><%=image_tag(@question.ask_image.to_s, :size => '480x270',:alt =>"")%></li>
+        <div class = "ask_show_title">質問内容</div>
+        <li><%=@question.ask_title%></li>
+        <li><%=@question.ask_content%></li>
+    </ul>
+  </div>
+  <div class="commentarea">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@question, @comment], local: true) do |f| %>
+        <%= f.text_area :content, class: "form-control", rows: 5 ,placeholder: "コメントを入力してください"%>
+        <%= button_tag type: "submit", class: "comment_button" do %>
+            コメントする
+        <% end %>
+        <% end %>
+      <% end %>
+  </div>
+
+
+  <h2>コメント一覧</h2>
+  <ul>
+    <% @comments.each do |c| %> 
+      <li class = "ask_reply">
+        <%= c.content %>
+      </li>
+    <% end %> 
+  </ul>
+
+
+
+
+<style>
+
+/* li.ask_reply {
+    word-wrap: break-word;
+} */
+.bbbbbody{
+
+  margin-left:5%;
+  margin-right:5%;
+}
+
+.stackshow{
+  text-align:center;
+}
+input{
+  border: solid 1px white;
+  width: 200px;
+  background-color:rgba(0,0,0,0);
+  color:white;
+  font-size: 16px;
+}
+input[type="file"] {
+    width: 90px;
+    height: 100px;
+}
+.form-control{
+  background-color:rgba(0,0,0,0);
+}
+
+
+
+.comment_button{
+  color: #FFF;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 10px;
+  width: 100px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+  margin: 40px 10px 40px 10px;
+  background-color: rgba(0,0,0,0);
+}
+
+.comment_button:hover {
+  border-color: #FFF;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: transparent;
+  outline-offset: 12px;
+  text-shadow: 2px 2px 3px #000;
+  cursor: pointer;
+ 
+}
+form{
+  justify-content:center;
+  flex-direction: column;
+}
+
+/* .ask_reply{
+  border: solid 1px #fff;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+} */
+
+.ask_reply {
+  position: relative;
+  display: block;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  width: 60%;
+  font-size: 16px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.ask_reply:before {
+  content: "";
+  position: absolute;
+  top: 10%%;
+  left: -5px;
+  margin-left: -15px;
+  border: 10px solid transparent;
+  border-right: 15px solid #fff;
+}
+
+
+li.ask_reply{
+  margin: 20px auto; 
+}
+
+
+textarea#comment_content {
+    width: 205px;
+}
+.commentarea{
+  text-align:center;
+}
+
+.ask_show_title {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.ask_show_title::before,
+.ask_show_title::after {
+  content: "";
+  border-top: 2px solid #fff;
+  flex-grow: 0.2;
+}
+.ask_show_title::before{
+  margin-right: 1rem;
+}
+
+.ask_show_title::after{
+  margin-left: 1rem;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+</style>

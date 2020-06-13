@@ -1,0 +1,151 @@
+<div class="navibar">
+<ul id="flip3" class="dropmenu">
+<li>
+<div class="topmenu batten">
+<span></span>
+</div>
+<ul class="menubotan">
+<li><%= link_to "MY PHOTOS",users_path, :class =>  "entry_text"%></li>
+<li><%= link_to "AWARD",award_posts_path %></li>
+<li><%= link_to "HOME",root_path, :class =>  "entry_text"%></li>
+<li><%= link_to "ASK",questions_path(current_user) %></li>
+<li><%= link_to "LOGOUT",users_sign_out_path, method: :delete %></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+  $('#myfile').change(function(e){
+    //ファイルオブジェクトを取得する
+    var file = e.target.files[0];
+    var reader = new FileReader();
+ 
+    //画像でない場合は処理終了
+    if(file.type.indexOf("image") < 0){
+      alert("画像ファイルを指定してください。");
+      return false;
+    }
+ 
+    //アップロードした画像を設定する
+    reader.onload = (function(file){
+      return function(e){
+        $("#img1").attr("src", e.target.result);
+        $("#img1").attr("title", file.name);
+      };
+    })(file);
+    reader.readAsDataURL(file);
+ 
+  });
+});
+</script>
+  <h1 class = "entry">ENTRY PAGE</h2>
+<div class = "entry_area">
+  <%# <script src="js/image-preview.js"></script> %>
+  <%= form_with(model: @post, local: true) do |form| %>
+  <ul>
+    <li class = "entry">エントリーするお題を選択してください(必須)</li>
+    <li class = "entry"><%= form.select :title_id,[['雨の日', 1], ['夏が明けたら', 2],['建造物と車', 3]], { include_blank: false, selected: 1 } ,{id: "title_id", class: "@post" } %></li>
+    <li class = "entry">写真のサブタイトルを入力してください(必須)</li>
+    <li class = "entry"><%= form.text_field :photo_name,include_blank: false %></li>
+    <li class = "entry">ロケーション(必須)</li>
+    <li class = "entry"><%= form.text_field :location,include_blank: false %></li>
+    <li class = "entry">Instagram ID(任意)</li>
+    <li class = "entry">※3位までにランクインした際に公表されます。</li>
+    <li class = "entry"><%= form.text_field :instagram_id,include_blank: false %></li>
+    <li class = "entry">写真を選択してください(必須)</li>
+    <li class = "entry">※オリジナル写真限定です。あなたのとびきりをお待ちしております。</li>
+    <li class = "entry"><%= form.file_field :image,multipart: :true,class: "image",id: "myfile", style: "display:none;" %></li>
+    <li class = "entry">
+      <div class = "btn-shine" id = "myfile"onClick="$('#myfile').click()">Select Your Photo</div>
+    </li >
+    <img id="img1" style="width:480px;height:270px;" />
+    <li class = "entry">
+      <div  class = "upload_button"><%= form.submit 'UPload'%></div>
+    </li>
+  </ul>
+  <% end %>
+</div>
+
+
+<style>
+
+.btn-shine {
+  color: #FFF;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 45px;
+  width: 200px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+  margin: 10px 10px 30px 10px;
+  cursor: default;
+}
+
+.btn-shine:hover {
+  border-color: #FFF;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: transparent;
+  outline-offset: 12px;
+  text-shadow: 2px 2px 3px #000;
+}
+
+
+.upload_button{
+  color: #FFF;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 45px;
+  width: 200px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+  margin: 10px 10px 30px 10px;
+  
+  
+}
+
+.upload_button:hover {
+  border-color: #FFF;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: transparent;
+  outline-offset: 12px;
+  text-shadow: 2px 2px 3px #000;
+  cursor: pointer;
+ 
+}
+input{
+  border: solid 1px white;
+  width: 200px;
+  background-color:rgba(0,0,0,0);
+  color:white;
+  font-size: 16px;
+}
+
+li{
+  text-decoration:none;
+}
+
+
+/* ----------------------------------------------- */
+
+</style>

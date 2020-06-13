@@ -1,0 +1,446 @@
+   <div class="questioncontainer">
+        <header class="questionhead">
+            Questions Box
+        </header>
+        <nav class="questionnav">
+            <p>
+                <%= link_to "MY PHOTOS",users_path, :class =>  "entry_text"%>
+            </p>
+            <p>
+               <%= link_to "ENTRY",entry_posts_path, :class =>  "entry_text"%>
+            </p>
+            <p>
+                <%= link_to "HOME",root_path, :class =>  "entry_text"%>
+
+            </p>
+            <p>
+                <%= link_to "LOGOUT",users_sign_out_path, method: :delete %>
+            </p>
+        </nav>
+        
+     <div class="que">
+        <div class="questioncontent">
+            <div class="book">
+                <div class="questiontitle">Category</div>
+                <div class="book-icon">
+                    <img src="https://cdn.pixabay.com/photo/2019/02/20/18/18/scorpio-4009731_960_720.png" alt="">
+                </div>
+                <div class="quecate">
+                <p>ポートレート</p>
+                <p>風景</p>
+                <p>モノクロ</p>
+                <p>クリエイティブ</p>
+                <p>動物</p>
+                <p>自然</p>
+                <p>建造物</p>
+                <p>物撮り</p>
+                <p>作品撮り</p>
+                <p>展覧会</p>
+                </div>
+            </div>
+            <div class="bio">
+                <div class="questionphoto">
+                  <div class="queform">
+                     <h2>Ask Area</h2>
+                     <%= form_with model: @question do |form|%>
+                      <ul>
+                        <li class = "ask">カテゴリーを選択してください(必須)</li>
+                        <li class = "ask"><%= form.select :ask_category,[['ポートレート', 1], ['風景', 2],['モノクロ',3],['クリエイティブ', 4],['動物', 5],['自然',6],['建造物', 7],['物撮り',8]], { include_blank: false, selected: 1 } ,{id: "title_id", class: "@post" } %></li>
+                        <li class = "ask">質問のタイトルを入力してください(必須)</li>
+                        <li class = "ask"><%= form.text_field :ask_title,include_blank: false %></li>
+                        <li class = "ask">質問内容を入力してください(必須)</li>
+                        <li class = "ask"><%= form.text_field :ask_content,include_blank: false %></li>
+
+                        <li class = "ask">写真を選択してください(任意)</li>
+                        <li class = "ask">
+                        <li class = "entry"><%= form.file_field :ask_image,multipart: :true,class: "image",id: "myfile", style: "display:none;" %>
+                          <div class = "btn-shine" id = "myfile"onClick="$('#myfile').click()">Select Your Photo</div>
+                        </li >
+                        <img id="img1" style="width:300px;height:200px;" />
+                        <li class = "ask">
+                          <div  class = "ask_button"><%= form.submit 'ASK'%></div>
+                        </li>
+                        <li class = "ask"><%= form.file_field :ask_image,multipart: :true,include_blank: true,class: "image",id: "myfile", style: "display:none;"%></li>
+                      </ul>
+                      <% end %>
+                      
+                </div>
+                </div>
+            
+            </div>
+
+            <div class="questionaward">
+                <div class="book-icon">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwMCA1MDAiIGhlaWdodD0iNTAwcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiB3aWR0aD0iNTAwcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzNi45MzIsNDEuMDMzYy03LjM1OS00LjU0MS0xNy42MjYtOS4wODQtMjcuMjU2LTkuMDg0ICBjLTQwLjE1OCwwLTcyLjY4MywzMi44LTcyLjY4Myw3My4zMjNjMCw1OC41OTMsNjIuNDE4LDc5LjQ5OCw5OS45MzksMTA4LjM4NXYxMy42MjljMCw1NC45NjYsMzguOTc3LDEwMC43NTUsOTAuODU1LDExMS4yOTd2NjUuODY4ICBjMCw5Ljk5Mi04LjE3NywxOC4xNzItMTguMTcsMTguMTcyaC00OS45NzJjLTEyLjUzNiwwLTIyLjcxMywxMC4xNzUtMjIuNzEzLDIyLjcxNmMwLDEyLjUzNiwxMC4xNzcsMjIuNzExLDIyLjcxMywyMi43MTFoMTgxLjcwOCAgYzEyLjU0MSwwLDIyLjcxNy0xMC4xNzUsMjIuNzE3LTIyLjcxMWMwLTEyLjU0MS0xMC4xNzYtMjIuNzE2LTIyLjcxNy0yMi43MTZoLTQ5Ljk2OWMtOS45ODgsMC0xOC4xNjktOC4xOC0xOC4xNjktMTguMTcydi02NS44NjggIGM1MS44NzctMTAuNTQyLDkwLjg1NC01Ni4zMzEsOTAuODU0LTExMS4yOTd2LTEzLjYyOWMzNy41MjEtMjguODg4LDk5LjkzOC00OS43OTIsOTkuOTM4LTEwOC4zODUgIGMwLTQwLjUyMy0zMi41MjctNzMuMzIzLTcyLjY4NS03My4zMjNjLTkuNjMzLDAtMTkuODkzLDQuNTQzLTI3LjI1NCw5LjA4NEgxMzYuOTMyeiBNMjE4LjcwMSwxMDQuNjMydjEwOS4wMjUgIGMwLDkuOTkxLTguMTc1LDE4LjE3Mi0xOC4xNywxOC4xNzJzLTE4LjE3Mi04LjE4MS0xOC4xNzItMTguMTcyVjEwNC42MzJjMC05Ljk5LDguMTc3LTE4LjE3MSwxOC4xNzItMTguMTcxICBTMjE4LjcwMSw5NC42NDMsMjE4LjcwMSwxMDQuNjMyeiBNODIuNDE4LDEwNS4yNzJjMC0xNS4xNzMsMTIuMTczLTI3LjUzNCwyNy4yNTctMjcuNTM0YzE1LjA3OSwwLDI3LjI1NiwxMi4zNjEsMjcuMjU2LDI3LjUzNCAgdjU1Ljg3OUMxMTAuNzY2LDE0NC42MTIsODIuNDE4LDEzMy42MDksODIuNDE4LDEwNS4yNzJ6IE00MTguNTgxLDEwNS4yNzJjMCwyOC4zMzctMjguMzQ4LDM5LjMzOS01NC41MTIsNTUuODc5di01NS44NzkgIGMwLTE1LjE3MywxMi4xNzItMjcuNTM0LDI3LjI1NC0yNy41MzRDNDA2LjQwOCw3Ny43MzksNDE4LjU4MSw5MC4xLDQxOC41ODEsMTA1LjI3MnoiIGZpbGw9IiMwMTAxMDEiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==" alt="">
+                </div>
+                <div class="questiontitle">Award for Best Photo</div>
+                    <p>1956, Double Star</p>
+                    <p>1960, Starship Troopers</p>
+                    <p>1962, Stranger in a Strange Land</p>
+                    <p>1967, The Moon Is a Harsh Mistress</p>
+                <div class="invert">
+                    <div class="quwstiontitle">The PhotoGrapher Awards for Best Photos</div>
+                        <p>1966, The Moon is a Harsh Mistres</p>
+                </div>
+            </div>
+            <div class="quotes">
+                
+        </div>
+    </div>
+</div>
+                <div class="questionlist">
+                <h2>Questions List</h2>    
+                <%= search_form_for @q,url: new_question_path do |f| %>
+                <%= f.text_field :keywords,placeholder: "keyword", required: false, value: params.dig(:q, :keywords), class: 'form-control'%>
+                <%= button_tag '<i class="fa fa-search" aria-hidden="true"></i>'.html_safe, :type => "submit", 
+                :class =>"btn btn-default btn-s-md" %>
+                <%end%>
+
+                <div class="questionlist">
+                <ol class = "list"><% @questions.each do |q| %>
+                  <li class = "question"><%=link_to q.ask_title,question_path(q)%></li>
+                <%end%></ol>
+                </div>
+                </div>
+                </div>
+
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+  $('#myfile').change(function(e){
+    //ファイルオブジェクトを取得する
+    var file = e.target.files[0];
+    var reader = new FileReader();
+ 
+    //画像でない場合は処理終了
+    if(file.type.indexOf("image") < 0){
+      alert("画像ファイルを指定してください。");
+      return false;
+    }
+ 
+    //アップロードした画像を設定する
+    reader.onload = (function(file){
+      return function(e){
+        $("#img1").attr("src", e.target.result);
+        $("#img1").attr("title", file.name);
+      };
+    })(file);
+    reader.readAsDataURL(file);
+ 
+  });
+});
+</script>
+
+
+ <style>
+a{
+    font-size:1vw;
+}
+
+.btn-shine {
+  color: #FFF;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 45px;
+  width: 200px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+  margin: 10px 10px 30px 10px;
+  cursor: default;
+}
+
+.btn-shine:hover {
+  border-color: #FFF;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: transparent;
+  outline-offset: 12px;
+  text-shadow: 2px 2px 3px #000;
+}
+
+
+.ask_button{
+  color: #FFF;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 45px;
+  width: 200px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, 0.5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+  margin: 10px 10px 30px 10px;
+  
+  
+}
+
+.ask_button:hover {
+  border-color: #FFF;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  outline-color: transparent;
+  outline-offset: 12px;
+  text-shadow: 2px 2px 3px #000;
+  cursor: pointer;
+ 
+}
+input{
+  border: solid 1px white;
+  width: 200px;
+  background-color:rgba(0,0,0,0);
+  color:white;
+  font-size: 16px;
+}
+@import url('https://fonts.googleapis.com/css?family=Radley');
+  @import url('https://fonts.googleapis.com/css?family=Ultra');
+
+
+
+.que {
+  width:100%;
+    --dark-color: rgb(26,26,26);
+    --vintage-color: white;
+    color:var(--dark-color);
+}
+.questionhead {
+    font-family: 'Ultra', serif;
+    font-size: 3rem;
+    text-align: center;
+    letter-spacing: 8px;
+    text-shadow: 1px 1px 0px var(--vintage-color), 3px 3px 0px var(--dark-color);
+    border-bottom: 3px solid var(--dark-color);
+}
+
+.questioncontainer { 
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid;
+    background: var(--vintage-color);
+    padding: 0 5px;
+    height: auto;
+}
+
+.questionnav {
+    border-bottom: 3px solid var(--dark-color);
+    display: flex;
+    justify-content: space-around;
+}
+
+.questionnav a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8em;
+    transition: all 0.3s;
+    color: var(--dark-color)
+}
+
+.questionnav a:hover {
+    background: var(--dark-color);
+    color: var(--vintage-color);
+}
+
+.questionnav p {
+    float: right;
+    padding: 0px 10px;
+    margin: 3px;
+    border-right: 2px solid var(--dark-color);
+}
+
+.questionnav p:last-child {
+    border-right: none;
+}
+
+.questioncontent {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+   
+    width: 100%;
+    border-right: 2px solid var(--dark-color);
+    border-left: 2px solid var(--dark-color);
+    border-bottom: 2px solid var(--dark-color);
+    box-sizing: border-box;
+}
+.quecate {
+    text-align: center;
+}
+.book {
+    border-right: 2px solid var(--dark-color);
+    position: relative;
+    margin: 10px;
+    font-size: 1vw;
+}
+
+.questiontitle {
+    font-size: 1em;
+    font-family: 'Ultra';
+    text-align: center;
+
+}
+.questionlist {
+    text-align: left;
+    font-size: 1rem;
+    position: relative;
+}
+
+.book .questionlist {
+    font-size: 0.75em;
+}
+
+.book-icon {
+    background: repeating-linear-gradient(-45deg, var(--vintage-color),  var(--vintage-color) 2px,var(--dark-color) 2px, var(--dark-color) 4px);
+    border: 2px solid var(--dark-color);
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85px;
+    margin: 5px 20px;
+}
+
+.book-icon img {
+    width: 90px;
+}
+
+.questionaward {
+    margin: 10px;
+    font-size: 1vw;
+    border-left: 2px solid var(--dark-color);
+    padding-left: 5px; 
+    position: relative;
+}
+
+.questionaward .book-icon {
+    margin: 0;
+}
+
+.questionaward .questiontitle {
+    font-size: 1.2em;
+}
+
+.queform {
+    text-align: center;
+    position: relative;
+}
+
+.invert {
+    color: var(--vintage-color);
+    background: var(--dark-color);
+    padding: 20px 15px;
+    border-radius: 7px; 
+    margin-top: 20px
+}
+
+.questionphoto {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    border: 2px solid var(--dark-color);
+    margin: 5px 20px;
+}
+
+.questionphoto img {
+    filter: sepia(50%);
+    width: 15em;
+    padding: 5px;
+}
+
+.bio {
+    font-size: 0.8em;
+    position: relative;
+}
+
+.bio .questiontitle {
+    font-size: 1.4em;
+    text-align: center  
+}
+
+.about {
+    columns: 10em;
+}
+
+.about p {
+    text-indent: 20px;
+    padding-top: 20px;
+}
+
+
+
+.quotes {
+    columns: 13em;
+    font-size: 0.8em;
+    width: 700px;
+}
+
+.quotes p {
+    padding: 10px 10px 10px 0;
+    margin: 0 5px;
+}
+
+.quotes .title {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.quotes .invert {
+    margin: 0 10px
+}
+
+
+/* Questionlist---------------------------------------------------------------------------------- */
+
+ol.list{
+  counter-reset:list;
+  list-style-type:none;
+  font: 14px/1.6 'arial narrow', sans-serif;
+  padding: 0;
+}
+ol.list li{
+  position:relative;
+  line-height: 30px;
+  padding-left:10px;
+  font-weight: bold;
+  font-size:14px;
+  border-bottom:solid 1px #fff;
+  width: 40%;
+      display: block;
+    margin: 25px auto;
+}
+ol.list li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: -30px;
+  width: 30px;
+  height: 32px;
+  background: rgba(0,0,0,0);
+  text-align: center;
+  border: solid 1px #fff;
+  color: #fff;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+li.question{
+    margin-top: 20px;
+}
+
+
+    </style>

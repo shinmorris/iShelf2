@@ -1,0 +1,54 @@
+<h1>Admin page</h1>
+
+
+<table>
+  <tr><th>【TitleID】<th>【PostID】</th><th>【EntryUserID】</th><th>【LikeUserID】</th><th>【LikeID】</th></tr>
+
+<% @zenbu.each do |q| %> 
+<table>
+  <tr>
+  <td><%= q.title_id %></td>
+  <td><%= q.id %></td>
+  <td><%= q.user_id %></td>
+  <td><%= q.name %></td>
+  <td><%= q.likeid %></td>
+
+  </tr>
+</table>
+<% end %>
+
+<div class="iine">
+<p>｛PostID=>イイネ数量｝の構図になっております。</p>
+<h3>Thema1</h3>
+<%=@count1 %> 
+<h3>Thema2</h3>
+<%=@count2 %> 
+<h3>Thema3</h3>
+<%=@count3 %> 
+</div>
+
+
+<style>
+table {
+	border-collapse: collapse;
+  width:80%;
+}
+td {
+  width:20%;
+	border: solid 1px;
+	padding: 0.5em;
+  text-align:center;
+}
+
+.iine{
+
+  margin-top:20px;
+  margin-bottom:20px;
+  border-bottom: solid 2px red;
+  border-top: solid 2px red;
+  
+}
+
+</style>
+
+<div><%= link_to 'Logout',destroy_kanri_session_path, method: :delete %></div>
